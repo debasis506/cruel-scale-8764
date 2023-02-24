@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women</title>
+</head>
+<style>
+    
+    #nav{
+        width:100%;
+        display:flex;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        text-align: center;
+        margin:auto
+    }
+    #nav h1{
+        color: midnightblue;
+    }
+    #nav a{
+        margin:auto;
+        text-decoration: none;
+    }
+    #filter{
+        margin: auto;
+        margin-top: 20px;
+        display:block;
+        margin-bottom: 20px;
+        color:white;
+        background-color: midnightblue;
+    }
+    #products{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        
+        
+    }
+    img{
+        width:100%;
+        height:50%
+    }
+
+    
+    #products>div{
+        width:85%;
+        height:400px;
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin-bottom: 85px;
+          padding: 10px;
+ 
+    }
+    button{   
+        background-color: midnightblue;
+        color: white;
+        display:block;
+        margin:auto
+         }
+         #whole h1,h2,h3,button{
+            text-align: center;
+         }
+         #nav>a> img{
+            width:40%
+         }
+</style>
+<body>
+    <div id="nav">
+        <h1 ><a href="index.html">MEN</a></h1>
+        <a href="#">Tops</a>
+        <a href="##">Pants</a>
+        <a href="#">Hoodies+sweats</a>
+        <a href="#">shirt</a>
+        
+        <a href="#">Loungewear</a>
+        <a href="#">Swimwear</a>
+        <a href="#">Outerwear</a>
+        <a href="addtocart.html"><img src="images/9781764.png" alt=""></a>
+    </div>
+    <select name="" id="filter">
+        <option value="">CATEGORY</option>
+        <option value="shirt">SHIRT</option>
+        <option value="Pants">PANTS</option>
+        <option value="tops">TOPS</option>
+    </select>
+    <div id="products">
+
+    </div>
+    <script>
+        let fetcheddata=[];
+        let container=document.getElementById("products")
+        let apiurl="https://63f788cee40e087c95911cda.mockapi.io/clothing"
+        fetch(apiurl)
+        .then((response)=>{
+            return response.json()
+        })
+        .then((data)=>{
+            display(data,data)
+            fetcheddata=data
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+        let cart=JSON.parse(localStorage.getItem("vouchers"))||[]
+        function display(data){
+            container.innerHTML=null
+            data.forEach((element) => {
+                let product=document.createElement("div")
+            product.setAttribute("id","whole")
+
+                let images=document.createElement("img")
+                images.setAttribute("src",element.images)
+
+
+                let description=document.createElement("p")
+                description.innerText=element.description
+
+                let title=document.createElement("h1")
+                title.innerText=element.title
+               
+
+                let price=document.createElement("h2")
+                price.innerText=element.price+"$"
+
+                let rating=document.createElement("h3")
+                rating.innerText="Rating-"+element.rating
+
+                let button=document.createElement("button")
+                button.innerText="ADD TO CART"
+
+                button.addEventListener("click",()=>{
+                    if(checkduplicate(element)){
+                        alert("Product Already in Cart")
+                    }
+                    else{
+                        cart.push({...element,quantity:1})
+                        localStorage.setItem("vouchers",JSON.stringify(cart))
+                        alert("Product Added To Cart")
+                    }
+                    
+                   
+                })
+                product.append(images,title,price,
+                rating,button)
+                container.append(product)
+                console.log(container)
+
+            });
+        }
+        let selectfilter=document.getElementById("filter")
+        selectfilter.addEventListener("change", ()=>{
+
+            let filterel=fetcheddata.filter((element)=>{
+            return element.title===selectfilter.value
+            })
+            display(filterel)
+        })
+        display(data)
+
+        function checkduplicate(element){
+            for(let i=0;i<cart.length;i++){
+                if(cart[i].title==element.title && cart[i].rating==element.rating && cart[i].price==element.price){
+                    return true
+                }
+
+            }
+            return false
+        }
+    </script>
+</body>
+</html>

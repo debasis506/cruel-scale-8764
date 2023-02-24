@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CART</title>
+</head>
+<style>
+    /* All CSS Goes Here  */
+    #voucher-container{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      row-gap: 25px;
+      
+      width:100%
+    }
+    #voucher-container>div{
+      width:90%
+    }
+    #voucher-container img{
+      width:100%
+    }
+    button{
+      display:inline;
+      margin:auto;
+      color:white;
+      background-color: rgb(73, 73, 212);
+    }
+    #total{
+        color: midnightblue;
+    }
+    .nav>a{
+        color:midnightblue;
+        
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    
+    <a href="./index.html">Home</a>
+   
+  </div>
+  <h1 id="total">
+    Your total order value is :- <span id="order-total">0</span>
+  </h1>
+  
+  <div id="voucher-container">
+    <!-- Here Append All the Favourites-->
+  </div>
+</body>
+</html>
+<script>
+ let container=document.getElementById("voucher-container")
+ 
+ let cart=JSON.parse(localStorage.getItem("vouchers"))
+        function display(){
+            container.innerHTML=null
+            cart.forEach((element) => {
+                let product=document.createElement("div")
+            product.setAttribute("id","whole")
+
+                let images=document.createElement("img")
+                images.setAttribute("src",element.images)
+
+
+                let description=document.createElement("p")
+                description.innerText=element.description
+
+                let title=document.createElement("h1")
+                title.innerText=element.title
+               
+
+                let price=document.createElement("h2")
+                price.innerText=element.price+"$"
+
+                let rating=document.createElement("h3")
+                rating.innerText="Rating-"+element.rating
+
+                let button=document.createElement("button")
+                button.innerText="Delete"
+
+                let increase=document.createElement("button")
+                increase.innerText="+"
+
+                let decrease=document.createElement("button")
+                decrease.innerText="-"
+
+                let quantity=document.createElement("span")
+                quantity.innerText=element.quantity
+
+                button.addEventListener("click",()=>{
+                    alert("removed")
+                    cart=cart.filter((ele)=>{
+                        return ele.title!==element.title
+                    })
+                    localStorage.setItem("vouchers",JSON.stringify(cart))
+               display()
+ })  
+                 product.append(images,title,price,rating,increase,quantity,decrease,button)
+                container.append(product)
+               
+
+            });
+        }
+        display()
+</script>
