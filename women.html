@@ -61,7 +61,14 @@
             text-align: center;
          }
          #nav>a> img{
-            width:40%
+            width:40%;
+            background-color: white;
+         }
+         #nav{
+            background-color: midnightblue;
+         }
+         #nav a{
+            color:white
          }
 </style>
 <body>
@@ -129,8 +136,16 @@
                 button.innerText="ADD TO CART"
 
                 button.addEventListener("click",()=>{
-                    cart.push({...element,quantity:1})
-                    localStorage.setItem("vouchers",JSON.stringify(cart))
+                    if(checkduplicate(element)){
+                        alert("Product Already in Cart")
+                    }
+                    else{
+                        cart.push({...element,quantity:1})
+                        localStorage.setItem("vouchers",JSON.stringify(cart))
+                        alert("Product Added To Cart")
+                    }
+                    
+                   
                 })
                 product.append(images,title,price,
                 rating,button)
@@ -148,6 +163,16 @@
             display(filterel)
         })
         display(data)
+
+        function checkduplicate(element){
+            for(let i=0;i<cart.length;i++){
+                if(cart[i].title==element.title && cart[i].rating==element.rating && cart[i].price==element.price){
+                    return true
+                }
+
+            }
+            return false
+        }
     </script>
 </body>
 </html>
