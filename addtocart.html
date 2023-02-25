@@ -13,7 +13,11 @@
       grid-template-columns: repeat(4,1fr);
       row-gap: 25px;
       
+      
       width:100%
+    }
+    #whole{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
     #voucher-container>div{
       width:90%
@@ -21,18 +25,39 @@
     #voucher-container img{
       width:100%
     }
-    button{
-      display:inline;
-      margin:auto;
-      color:white;
-      background-color: rgb(73, 73, 212);
-    }
+    button{   
+        background-color: midnightblue;
+        color: white;
+        
+        margin:2px
+         }
     #total{
-        color: midnightblue;
+        color:white
     }
     .nav>a{
-        color:midnightblue;
+        color:white
         
+    }
+    .nav{
+        background-color: midnightblue;
+        margin: 0%;
+    }
+    #total{
+        background-color: midnightblue;
+        text-align: center;
+        margin: 0%;
+        margin-bottom: 5px;
+    }
+    #pay{
+        display: block;
+        margin: auto;
+        margin-bottom: 70px;
+    }
+    h1,h2,h3{
+        text-align: center;
+    }
+    #incre{
+        margin-left: 77px;
     }
   </style>
 </head>
@@ -45,7 +70,7 @@
   <h1 id="total">
     Your total order value is :- <span id="order-total">0</span>
   </h1>
-  
+  <button id="pay">Make Payment</button>
   <div id="voucher-container">
     <!-- Here Append All the Favourites-->
   </div>
@@ -73,7 +98,7 @@
                
 
                 let price=document.createElement("h2")
-                price.innerText=element.price+"$"
+                price.innerText="Price-$"+element.price
 
                 let rating=document.createElement("h3")
                 rating.innerText="Rating-"+element.rating
@@ -82,6 +107,7 @@
                 button.innerText="Delete"
 
                 let increase=document.createElement("button")
+                increase.setAttribute("id","incre")
                 increase.innerText="+"
 
                 let decrease=document.createElement("button")
@@ -96,8 +122,30 @@
                         return ele.title!==element.title
                     })
                     localStorage.setItem("vouchers",JSON.stringify(cart))
-               display()
- })  
+                display()
+                }) 
+                increase.addEventListener("click",()=>{
+                    element=element.quantity++
+                    localStorage.setItem("vouchers",JSON.stringify(cart))
+                display()
+                }) 
+
+                decrease.addEventListener("click",()=>{
+                    if(element.quantity>1){
+                        element=element.quantity--
+                    }
+                   
+                    localStorage.setItem("vouchers",JSON.stringify(cart))
+                display()
+                }) 
+
+                let sum=0;
+                for(let i=0;i<cart.length;i++){
+                    sum+=cart[i].price*cart[i].quantity
+                }
+                document.getElementById("order-total").innerText="$"+sum
+
+
                  product.append(images,title,price,rating,increase,quantity,decrease,button)
                 container.append(product)
                

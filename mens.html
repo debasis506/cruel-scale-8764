@@ -13,12 +13,14 @@
         display:flex;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         text-align: center;
-        margin:auto
+        margin:auto;
+        background-color: midnightblue;
     }
     #nav h1{
-        color: midnightblue;
+        color: white
     }
     #nav a{
+        color: white;
         margin:auto;
         text-decoration: none;
     }
@@ -61,7 +63,8 @@
             text-align: center;
          }
          #nav>a> img{
-            width:40%
+            width:40%;
+            background-color: white;
          }
 </style>
 <body>
@@ -83,6 +86,14 @@
         <option value="Pants">PANTS</option>
         <option value="tops">TOPS</option>
     </select>
+    <div class="filter-condition">
+        <span>Views As a</span>
+        <select name="" id="select">
+            <option value="Default">Default</option>
+            <option value="LowToHigh">Low to high</option>
+            <option value="HighToLow">High to low</option>
+        </select>
+    </div>
     <div id="products">
 
     </div>
@@ -169,3 +180,4 @@
     </script>
 </body>
 </html>
+<script type="text" src="filter.js"></script>
