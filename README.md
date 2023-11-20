@@ -8,7 +8,7 @@ I am a collaborative and dedicated team player, adept at working seamlessly with
 
 Arispostale E-Commerce Website
 
-Welcome to Arispostale, your ultimate destination for stylish and affordable fashion! Our e-commerce website is meticulously designed to offer users a seamless and enjoyable shopping experience, featuring a diverse range of clothing and accessories. Check out the "LIVE PROJECT" here.
+Welcome to Arispostale, your ultimate destination for stylish and affordable fashion! Our e-commerce website is meticulously designed to offer users a seamless and enjoyable shopping experience, featuring a diverse range of clothing and accessories. Check out the "LIVE PROJECT" here-https://profound-trifle-7d9493.netlify.app/.
 
 ## Key Features:
 
