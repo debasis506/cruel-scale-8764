@@ -1,16 +1,16 @@
 # Arispostale E-Commerce Website
 
-##About Me:
+## About Me:
 
 I am a collaborative and dedicated team player, adept at working seamlessly within a team environment. My proficiency in JAVA, along with my skills in front-end technologies such as HTML, JavaScript, and CSS, enables me to contribute effectively to the development process. I am committed to creating robust and efficient applications that not only meet but exceed user expectations.
 
-##Project Description:
+## Project Description:
 
 Arispostale E-Commerce Website
 
 Welcome to Arispostale, your ultimate destination for stylish and affordable fashion! Our e-commerce website is meticulously designed to offer users a seamless and enjoyable shopping experience, featuring a diverse range of clothing and accessories. Check out the "LIVE PROJECT" here.
 
-##Key Features:
+## Key Features:
 
 User-friendly Interface: Our website boasts an intuitive and easy-to-navigate interface, ensuring a pleasant shopping journey for users.
 
