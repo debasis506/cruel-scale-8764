@@ -1,8 +1,5 @@
 # Arispostale E-Commerce Website
 
-## About Me:
-
-I am a collaborative and dedicated team player, adept at working seamlessly within a team environment. My proficiency in JAVA, along with my skills in front-end technologies such as HTML, JavaScript, and CSS, enables me to contribute effectively to the development process. I am committed to creating robust and efficient applications that not only meet but exceed user expectations.
 
 ## Project Description:
 
